@@ -9,6 +9,7 @@
         <RouterLink
           :to="nav.href"
           active-class="active"
+          :class="{ active : isMatch(nav.path)}"
           class="nav-link">
           {{ nav.name }}
         </RouterLink>
@@ -19,29 +20,37 @@
 
 <script>
 import Logo from '~/components/Logo'
-    export default{
-      components:{
-        Logo
-      },
-        data(){
-            return {
-                navigation:[
-                    {
-                        name : 'Search',
-                        href : '/'
-                    },
-                    {
-                        name : 'Movie',
-                        href : '/movie'
-                    },
-                    {
-                        name : 'About',
-                        href : '/about'
-                    },
-                ]
-            }
+
+export default{
+  components:{
+    Logo
+  },
+    data(){
+        return {
+            navigation:[
+                {
+                    name : 'Search',
+                    href : '/'
+                },
+                {
+                    name : 'Movie',
+                    href : '/movie/tt4520988',
+                    path : /^\/movie/
+                },
+                {
+                    name : 'About',
+                    href : '/about'
+                },
+            ]
         }
+    },
+    methods:{
+      isMatch(path){
+        if(!path) return false
+        return path.test(this.$route.fullPath)
+      }
     }
+}
 </script>
 
 <style lang="scss" scoped>
