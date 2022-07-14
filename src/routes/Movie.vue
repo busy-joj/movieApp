@@ -100,8 +100,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "~/scss/main.scss";
-
 .container{
   padding-top:40px;
 }
@@ -130,7 +128,7 @@ export default {
   }
 }
 .movie-details{display:flex;color:$gray-600;
-  .poster{flex-shrink: 0;width:500px;height:500*3/2;margin-right:70px;border-radius: 10px;background-color:$gray-200;background-size:cover;background-position:center;}
+  .poster{flex-shrink: 0;width:500px;height:500px *3/2;margin-right:70px;border-radius: 10px;background-color:$gray-200;background-size:cover;background-position:center;}
   .specs{flex-grow:1;
     .title{color:$black;font-family: 'Oswald', sans-serif;font-size:70px;line-height:1;margin-bottom:30px;}
     .labels{color:$primary;

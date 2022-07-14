@@ -46,7 +46,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "~/scss/main.scss";
 
 .about{text-align: center;padding-top:40px;font-size:20px;
   .photo{

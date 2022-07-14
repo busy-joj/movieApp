@@ -51,7 +51,6 @@ export default{
 </script>
 
 <style lang="scss" scoped>
-@import "~/scss/main";
 .movie{
     $width: 200px;
     position:relative;width: $width;height:$width * 3 / 2;margin:10px;border-radius: 4px;background-color:$gray-400;background-size:cover;overflow:hidden;
