@@ -8,7 +8,9 @@ import NotFound from './NotFound'
 export default createRouter({
     //Hash 모드
     history: createWebHashHistory(),
-
+    scrollBehavior(){
+        return { top:0 }
+    },
     routes: [
         {
             path: '/',
