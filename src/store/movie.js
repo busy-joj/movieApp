@@ -1,14 +1,14 @@
 import axios from 'axios'
 import _uniqBy from 'lodash/uniqBy'
 
-const _defaultMessage ='Search for the movie title!'
+const _defaultMessage = 'Search for the movie title!'
 export default {
     namespaced: true,
     state: () => ({
         movies: [],
         message: _defaultMessage,
         loading: false,
-        theMovie:{}
+        theMovie: {}
     }),
     getters: {},
     mutations: {
@@ -64,7 +64,7 @@ export default {
                         })
                     }
                 }
-            } catch (message) {
+            } catch ({ message }) {
                 commit('updateState', {
                     movies: [],
                     message
@@ -102,20 +102,6 @@ export default {
     }
 }
 
-function _fetchMovie(payload) {
-    const { title, type, year, page, id } = payload
-    const OMDB_API_KEY = '7035c60c'
-    const url = id ? `https://www.omdbapi.com/?apikey=${OMDB_API_KEY}&i=${id}` : `https://www.omdbapi.com/?apikey=${OMDB_API_KEY}&s=${title}&type=${type}&y=${year}&page=${page}`
-    return new Promise((resolve, reject) => {
-        axios.get(url)
-            .then(res => {
-                if (res.data.Error) {
-                    reject(res.data.Error)
-                }
-                resolve(res)
-            })
-            .catch((err) => {
-                reject(err.message)
-            })
-    })
+async function _fetchMovie(payload) {
+    return await axios.post('/.netlify/functions/movie', payload)
 }
