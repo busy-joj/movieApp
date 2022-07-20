@@ -1,10 +1,12 @@
 <template>
-    <footer>
-        <Logo />
-        <a href="https://github.com/busy-joj" target="_blank">
-        (C){{ new Date().getFullYear() }} HEROPY
-        </a>
-    </footer>
+  <footer>
+    <Logo />
+    <a
+      href="https://github.com/busy-joj"
+      target="_blank">
+      (C){{ new Date().getFullYear() }} joj
+    </a>
+  </footer>
 </template>
 
 <script>
