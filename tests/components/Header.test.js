@@ -5,7 +5,10 @@ import Header from '~/components/Header'
 
 describe('components/Header.vue', () => {
     let wrapper
-    beforeEach(() => {
+    beforeEach(async () => {
+        window.scrollTo = jest.fn()
+        router.push('/movie/tt1234567')
+        await router.isReady()
         wrapper = shallowMount(Header, {
             global: {
                 plugins: [
@@ -21,4 +24,15 @@ describe('components/Header.vue', () => {
         const regExp = undefined
         expect(wrapper.vm.isMatch(regExp)).toBe(false)
     })
+
+    test('경로 정규포현식과 일치해야 합니다', () => {
+        const regExp = /^\/movie/
+        expect(wrapper.vm.isMatch(regExp)).toBe(true)
+    })
+
+    test('경로 정규포현식과 일치하지 않아야 합니다', () => {
+        const regExp = /^\/joj/
+        expect(wrapper.vm.isMatch(regExp)).toBe(false)
+    })
+
 })
